@@ -2,36 +2,46 @@
 //  ViewController.swift
 //  F7
 //
-//  Created by Otakhon Toshpulatov on 05/03/23.
+//  Created by Otakhon Toshpulatov on 30/03/23.
 //
 
+
 import UIKit
+import Foundation
+
+
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var login: UIButton!
-    @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        // Do any additional setup after loading the view.let headers = [
+        "X-RapidAPI-Key": "8bca79642emsh920ec95748c2827p17b142jsn03a3ee20edb8",
+        "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+    ]
+
+    let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v3/countries?name=Uzbekistan&code=UZ&search=Uzbekistan")! as URL,
+                                            cachePolicy: .useProtocolCachePolicy,
+                                        timeoutInterval: 10.0)
+    request.httpMethod = "GET"
+    request.allHTTPHeaderFields = headers
+
+    let session = URLSession.shared
+    let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        if (error != nil) {
+            print(error)
+        } else {
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse)
+        }
+    })
+
+    dataTask.resume()
+
+
     }
 
-    @IBAction func loginButtonTapped(_ sender: Any) {
-        func login(with username: String, password: String) {
-           if username == "otabek" && password == "otaxon5550" {
-              // Successful login, navigate to main screen
-              let mainVC = storyboard?.instantiateViewController(identifier: "MainViewController") as! ViewController
-              navigationController?.pushViewController(mainVC, animated: true)
-           } else {
-              // Invalid credentials, show error message
-              let alert = UIAlertController(title: "Login Failed", message: "Invalid username or password", preferredStyle: .alert)
-              alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-              present(alert, animated: true, completion: nil)
-           }
-        }
-    }
-    
+
 }
+import Foundation
 

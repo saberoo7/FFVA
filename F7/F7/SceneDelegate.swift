@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  F7
 //
-//  Created by Otakhon Toshpulatov on 05/03/23.
+//  Created by Otakhon Toshpulatov on 30/03/23.
 //
 
 import UIKit
