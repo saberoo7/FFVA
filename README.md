@@ -16,7 +16,7 @@ To install and run this project locally:
 Clone this repository.
 bash
 Copy code
-git clone https://github.com/saberoo7/bytecoin-price-checker.git
+git clone https://github.com/saberoo7/FFVA/tree/main
 Navigate to the project directory.
 bash
 Copy code
